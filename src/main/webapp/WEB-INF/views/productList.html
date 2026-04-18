@@ -119,6 +119,8 @@
             </tr>
         </tbody>
     </table>
-
+    <footer style="margin-top: 20px; padding: 0 10px; background-color: #f0f0f0;">
+        <p style="margin: 0; line-height: 1;" th:text="${'실습 수행 일시: ' + #temporals.format(#temporals.createNow(), 'yyyy년 MM월 dd일 (E) a hh:mm:ss') + '  |  학번: 2291073  |  성명: 김승윤'}"></p>
+    </footer>
 </body>
 </html>
