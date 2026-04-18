@@ -57,7 +57,7 @@
 
         <div class="detail-row">
             <span class="detail-label">카테고리</span>
-            <span class="detail-value" th:text="*{category}">카테고리</span>
+            <span class="detail-value" th:text="${product.category != null ? product.category.name : '-'}">카테고리</span>
         </div>
 
         <div class="detail-row">
