@@ -43,12 +43,16 @@
         RedirectAttributes.addFlashAttribute()로 전달된 값이 여기 표시됩니다.
         Flash 속성은 리다이렉트 후 딱 한 번 표시되고 자동으로 삭제됩니다.
     -->
+
     <div class="alert-success" th:if="${successMessage}">
         <span th:text="${successMessage}">성공 메시지</span>
     </div>
 
-    <a class="btn" th:href="@{/products/create}">+ 새 상품 등록</a>
-    <div style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+    <div style="margin-bottom: 16px; display: flex; gap: 8px;">
+        <a class="btn" th:href="@{/products/create}" style="margin-bottom: 0;">+ 새 상품 등록</a>
+        <a class="btn" th:href="@{/categories}"
+           style="margin-bottom: 0; background-color: #6c757d;">카테고리 관리</a>
+    </div>    <div style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
         <form th:action="@{/products}" method="get" style="display: flex; gap: 5px; align-items: center;">
             <input type="text" name="keyword" th:value="${keyword}" placeholder="상품명 검색"
                    style="width: 180px; padding: 6px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;"/>
