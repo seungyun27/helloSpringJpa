@@ -48,9 +48,30 @@ public class ProductController {
     // ─────────────────────────────────────────────────────────────────
 
     @GetMapping
-    public String listProducts(Model model) {
-        List<Product> products = productService.getAllProducts();
+    public String listProducts(@RequestParam(required = false) String keyword,
+                               @RequestParam(required = false) Long categoryId,
+                               Model model) {
+        List<Product> products;
+
+        // 검색 조건 우선순위 결정
+        if (keyword != null && !keyword.isBlank()) {
+            // 이름으로 검색
+            products = productService.searchByName(keyword);
+        } else if (categoryId != null) {
+            // 해당 카테고리만 필터링
+            products = productService.searchByCategory(categoryId);
+        } else {
+            // 조건이 없으면 전체 상품 목록 로드
+            products = productService.getAllProducts();
+        }
+
         model.addAttribute("products", products);
+
+        // 검색 결과 및 UI 유지를 위한 상태 값들을 모델에 추가
+        model.addAttribute("categories", categoryService.getAllCategories());
+        model.addAttribute("keyword", keyword); // 검색어 유지
+        model.addAttribute("categoryId", categoryId); // 선택 카테고리 유지
+
         return "productList";
     }
 
