@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.beans.factory.annotation.Autowired;
+import kr.ac.hansung.cse.service.CategoryService;
 
 import java.util.List;
 
@@ -35,6 +37,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/products")
 public class ProductController {
+    @Autowired
+    private CategoryService categoryService;
 
     private final ProductService productService;
 
