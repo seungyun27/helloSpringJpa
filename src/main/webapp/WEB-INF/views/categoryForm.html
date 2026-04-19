@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>카테고리 등록</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+<div class="container" style="max-width: 500px; margin-top: 100px;">
+
+    <div class="card shadow">
+        <div class="card-body p-4">
+            <h4 class="card-title mb-4 fw-bold">새 카테고리 등록</h4>
+
+            <form th:action="@{/categories/create}" th:object="${categoryForm}" method="post">
+                <div class="mb-3">
+                    <label class="form-label">카테고리 이름</label>
+                    <input type="text" class="form-control" th:field="*{name}" placeholder="카테고리 이름"/>
+                    <span class="text-danger small" th:errors="*{name}" style="color:red"></span>
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary">등록</button>
+                    <a th:href="@{/categories}" class="btn btn-outline-secondary">취소</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer style="margin-top: 20px; padding: 0 10px; background-color: #f0f0f0;">
+        <p style="margin: 0; line-height: 1;" th:text="${'실습 수행 일시: ' + #temporals.format(#temporals.createNow(), 'yyyy년 MM월 dd일 (E) a hh:mm:ss') + '  |  학번: 2291073  |  성명: 김승윤'}"></p>
+    </footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
